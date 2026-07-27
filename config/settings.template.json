@@ -1,0 +1,43 @@
+{
+  "//": "Template for ~/.gemini/settings.json. setup.sh installs it (patching model.name from GEMINI_MODEL) so students are never prompted AND the free-tier quota is protected. Quota-critical: experimental.enableAgents=false (subagent auto-delegation caused ~75% of token burn in testing) and experimental.useModelRouter=false (stops silent drift to a costlier auto-routed model). The context.* and summarizeToolOutput.* keys trim how much context is sent per request; model.maxSessionTurns is a runaway-session guard. There is no direct 'context window size' setting — the window is a fixed model property; these limit what the CLI accumulates/sends.",
+  "security": {
+    "auth": {
+      "selectedType": "gemini-api-key"
+    }
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
+  },
+  "ui": {
+    "theme": "Default"
+  },
+  "model": {
+    "name": "gemini-3.5-flash",
+    "maxSessionTurns": 25
+  },
+  "experimental": {
+    "enableAgents": false,
+    "useModelRouter": false
+  },
+  "general": {
+    "plan": {
+      "modelRouting": false
+    },
+    "checkpointing": {
+      "enabled": false
+    }
+  },
+  "skills": {
+    "enabled": false
+  },
+  "context": {
+    "fileName": "GEMINI.md",
+    "discoveryMaxDirs": 1,
+    "includeDirectoryTree": false
+  },
+  "summarizeToolOutput": {
+    "run_shell_command": {
+      "tokenBudget": 2000
+    }
+  }
+}
